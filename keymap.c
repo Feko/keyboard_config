@@ -28,7 +28,9 @@ enum {
 enum fekeys {
   MK_SELWD = SAFE_RANGE,
   MK_SELLN,
-  MK_JIGGR
+  MK_JIGGR,
+  MK_LSHFT,
+  MK_RSHFT
 };
 
 
@@ -38,6 +40,8 @@ bool jiggler_direction = false; // used to alternate direction
 uint16_t jiggler_frequency = 15000; // in miliseconds
 uint16_t jiggler_timer = 0;
 
+// Shift curly brackets timer
+static uint16_t brace_timer;
 
 // Macro processor
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
@@ -62,6 +66,40 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         return false;
     }
   }
+
+  if(keycode == MK_LSHFT)
+  {
+    if (record->event.pressed) {
+        brace_timer = timer_read();
+        register_code(KC_LSFT);
+    }
+    else
+    {
+      unregister_code(KC_LSFT);
+      if (timer_elapsed(brace_timer) < TAPPING_TERM) {
+        SEND_STRING(SS_LSFT(SS_TAP(X_LBRC)));
+      }
+    }
+    return false;
+  }
+
+  if(keycode == MK_RSHFT)
+  {
+    if (record->event.pressed) {
+        brace_timer = timer_read();
+        register_code(KC_RSFT);
+    }
+    else
+    {
+      unregister_code(KC_RSFT);
+      if (timer_elapsed(brace_timer) < TAPPING_TERM) {
+        SEND_STRING(SS_LSFT(SS_TAP(X_RBRC)));
+      }
+    }
+    return false;
+  }
+
+  
 
   return true;
 }
@@ -95,8 +133,6 @@ void omni_reset(tap_dance_state_t *state, void *user_data);
 
 
 // Shortcut to make keymap more readable
-#define FK_LSFT LSFT_T(KC_LCBR)
-#define FK_RSFT RSFT_T(KC_RCBR)
 #define FK_RALT RALT_T(KC_ENT)
 #define FK_OMNILAYR TD(TD_OMNILAYR)
 
@@ -109,7 +145,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤   
        KC_ENT  , KC_A   , KC_S   , KC_D   , KC_F   , KC_G   , KC_PSCR,                          MK_SELLN, KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT, 
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤      
-       FK_LSFT , KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,MK_SELWD, KC_PSCR,         KC_HOME, KC_END , KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, FK_RSFT, 
+       MK_LSHFT, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,MK_SELWD, KC_PSCR,         KC_HOME, KC_END , KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH,MK_RSHFT, 
     //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
        KC_LCTL , KC_BSLS, KC_LGUI, KC_LALT,   FK_OMNILAYR   , KC_SPC , KC_DEL ,         FK_RALT, KC_BSPC,   FK_OMNILAYR   , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
     //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘   
