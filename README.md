@@ -7,7 +7,7 @@ This repo contains my presets, macros and configurations for the **[QMK Firmware
 ---
 
 # Keymap
-## Layer 0 - QERTY
+## Layer 0 - QWERTY
 
 ![](./imgs/layer0.png)
 
