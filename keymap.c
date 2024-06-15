@@ -33,6 +33,8 @@ enum fekeys {
   MK_RSHFT
 };
 
+// TAPPING_TERM is too slow for left shift
+#define LEFT_SHIFT_TOLERANCE 100
 
 // Jiggler control variables
 bool is_jiggler_active = false;
@@ -76,7 +78,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     else
     {
       unregister_code(KC_LSFT);
-      if (timer_elapsed(brace_timer) < TAPPING_TERM) {
+      if (timer_elapsed(brace_timer) < LEFT_SHIFT_TOLERANCE) {
         SEND_STRING(SS_LSFT(SS_TAP(X_LBRC)));
       }
     }
@@ -139,7 +141,7 @@ void omni_reset(tap_dance_state_t *state, void *user_data);
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_QUERTY] = LAYOUT(
     //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-	   KC_ESC  , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                                             KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_MINS,
+       KC_ESC  , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                                             KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_MINS,
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
        KC_TAB  , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   , TO(1)  ,                           KC_TRNS, KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_EQL , 
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤   
