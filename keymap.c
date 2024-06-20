@@ -4,6 +4,7 @@
 
 enum layers {
     _QUERTY,
+    _COLEMAK,
     _SYMBOL,
     _NAV_RGB_MEDIA,
     _MOUSE_ADJUST
@@ -115,11 +116,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
 
+    [_COLEMAK] = LAYOUT(
+    //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
+       KC_ESC  , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                                             KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_MINS,
+    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+       KC_TAB  , KC_Q   , KC_W   , KC_F   , KC_P   , KC_G   , TO(2)  ,                           TO(0)  , KC_J   , KC_L   , KC_U   , KC_Y   , KC_SCLN, KC_EQL , 
+    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤   
+       KC_ENT  , KC_A   , KC_R   , KC_S   , KC_T   , KC_D   , KC_PSCR,                          MK_SELLN, KC_H   , KC_N   , KC_E   , KC_I   , KC_O   , KC_QUOT, 
+    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤      
+       KC_LSFT , KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,MK_SELWD, KC_PSCR,         KC_HOME, KC_END , KC_K   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSFT, 
+    //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
+       KC_LCTL , KC_NUBS, KC_LGUI, KC_LALT,   FK_OMNILAYR   , KC_SPC , KC_DEL ,         FK_RALT, KC_BSPC,   FK_OMNILAYR   , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
+    //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘   
+    ),
+
+
 	[_SYMBOL] = LAYOUT(
     //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
        KC_GRV  , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  ,                                             KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , 
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤   
-       KC_TILD , KC_EXLM, KC_P7  , KC_P8  , KC_P9  , KC_PPLS, TO(2)  ,                           TO(0)  , KC_PGUP, KC_LCBR, KC_RCBR, KC_DLR , KC_AMPR, KC_F12 , 
+       KC_TILD , KC_EXLM, KC_P7  , KC_P8  , KC_P9  , KC_PPLS, TO(3)  ,                           TO(1)  , KC_PGUP, KC_LCBR, KC_RCBR, KC_DLR , KC_AMPR, KC_F12 , 
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤   
        KC_PCMM , KC_AT  , KC_P4  , KC_P5  , KC_P6  , KC_ASTR, KC_CAPS,                           KC_APP , KC_HOME, KC_LBRC, KC_RBRC, KC_PIPE, KC_END , KC_BSLS, 
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤   
@@ -134,7 +150,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐    
         KC_VOLU, RGB_MOD, RGB_SPI, RGB_VAI, RGB_SAI, RGB_HUI,                                             KC_F13 , KC_F14 , KC_F15 , KC_F16 , KC_F17 , KC_MAIL, 
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤       
-        KC_VOLD,RGB_RMOD, RGB_SPD, RGB_VAD, RGB_SAD, RGB_HUD, TO(3)  ,                           TO(1)  , KC_WBAK, KC_PGUP, KC_UP  , KC_PGDN, KC_WFWD, KC_EXEC, 
+        KC_VOLD,RGB_RMOD, RGB_SPD, RGB_VAD, RGB_SAD, RGB_HUD, TO(4)  ,                           TO(2)  , KC_WBAK, KC_PGUP, KC_UP  , KC_PGDN, KC_WFWD, KC_EXEC, 
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤     
         KC_MUTE, RGB_M_P, RGB_M_B, RGB_M_R,RGB_M_SW,RGB_M_SN, RGB_TOG,                          KC_WREF , KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END , KC_MYCM, 
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤     
@@ -149,7 +165,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐     
         KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                                             KC_F18 , KC_F19 , KC_F19 , KC_F20 , KC_F21 , KC_PWR ,
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤     
-        QK_BOOT, KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                           TO(2)  , KC_WH_L, KC_WH_U, KC_MS_U, KC_WH_D, KC_WH_R, KC_SLEP, 
+        QK_BOOT, KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                           TO(3)  , KC_WH_L, KC_WH_U, KC_MS_U, KC_WH_D, KC_WH_R, KC_SLEP, 
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤     
         DB_TOGG, KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                           KC_NO  , KC_NO  , KC_MS_L, KC_MS_D, KC_MS_R, KC_NO  , KC_WAKE,
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤     
@@ -189,7 +205,7 @@ void omni_finished(tap_dance_state_t *state, void *user_data) {
     omni_tap_state.state = cur_dance(state);
     switch (omni_tap_state.state) {
         case TD_HOLD:
-            layer_on(state->count);
+            layer_on(state->count + 1);
             break;
         default:
             break;
@@ -200,7 +216,7 @@ void omni_finished(tap_dance_state_t *state, void *user_data) {
 void omni_reset(tap_dance_state_t *state, void *user_data) {
     // If the key was held down and now is released then switch off the layer
     if (omni_tap_state.state == TD_HOLD) {
-        layer_off(state->count);
+        layer_off(state->count + 1);
     }
     omni_tap_state.state = TD_NONE;
 }
