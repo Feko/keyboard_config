@@ -12,19 +12,24 @@ This repo contains my presets, macros and configurations for the **[QMK Firmware
 ![](./imgs/layer0.png)
 
 
-## Layer 1 - Symbols, F-keys and Numpad
+## Layer 1 - COLEMAK
 
 ![](./imgs/layer1.png)
 
 
-## Layer 2 - Navigation, Media and RGB Control
+## Layer 2 - Symbols, F-keys and Numpad
 
 ![](./imgs/layer2.png)
 
 
-## Layer 3 - Mouse keys and arduino reset
+## Layer 3 - Navigation, Media and RGB Control
 
 ![](./imgs/layer3.png)
+
+
+## Layer 4 - Mouse keys and arduino reset
+
+![](./imgs/layer4.png)
 
 
 ### Info
