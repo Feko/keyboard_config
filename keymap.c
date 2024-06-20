@@ -136,11 +136,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤       
         KC_VOLD,RGB_RMOD, RGB_SPD, RGB_VAD, RGB_SAD, RGB_HUD, TO(3)  ,                           TO(1)  , KC_WBAK, KC_PGUP, KC_UP  , KC_PGDN, KC_WFWD, KC_EXEC, 
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤     
-        KC_MNXT, RGB_M_P, RGB_M_B, RGB_M_R,RGB_M_SW,RGB_M_SN, RGB_TOG,                          KC_WREF , KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END , KC_MYCM, 
+        KC_MUTE, RGB_M_P, RGB_M_B, RGB_M_R,RGB_M_SW,RGB_M_SN, RGB_TOG,                          KC_WREF , KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END , KC_MYCM, 
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤     
-        KC_MPRV, RGB_M_K, RGB_M_X, RGB_M_G, RGB_M_T, KC_NO  , KC_BRIU, KC_BRID,         KC_TRNS, KC_TRNS, KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , 
+        KC_TRNS, RGB_M_K, RGB_M_X, RGB_M_G, RGB_M_T, KC_NO  , KC_MPRV, KC_MNXT,         KC_BRIU, KC_BRID, KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , 
     //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤    
-        KC_MUTE, KC_NO  , KC_NO  , KC_NO  ,      KC_NO  ,     KC_MPLY, KC_MPLY,         KC_TRNS, KC_TRNS,     KC_NO  ,      KC_NO  , KC_NO  , KC_NO  , KC_NO
+        KC_TRNS, KC_NO  , KC_NO  , KC_NO  ,      KC_NO  ,     KC_MPLY, KC_MPLY,         KC_TRNS, KC_TRNS,     KC_NO  ,      KC_NO  , KC_NO  , KC_NO  , KC_NO
     //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘     
     ),
 
